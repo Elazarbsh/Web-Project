@@ -3,7 +3,10 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const session = require('express-session');
+const passport = require('passport');
+const MongoStore = require('connect-mongo');
+const LocalStrategy = require('passport-local').Strategy;
 const app = express();
 app.use(express.static('public'));
 app.engine("ejs", ejsMate);
@@ -11,18 +14,70 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 
+
+//set up session and session store.
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24
+  },
+  store: MongoStore.create({
+    mongoUrl: "mongodb+srv://admin-elazar:elazarbsh@cluster0.4vrte.mongodb.net/userDB",
+    collectionName: "sessions"
+  })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 mongoose.connect("mongodb+srv://admin-elazar:elazarbsh@cluster0.4vrte.mongodb.net/userDB", { useNewUrlParser: true });
 
 //users schema and model.
-const userSchema = {
-    email: String,
-    password: String
-}
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String
+});
 const User = mongoose.model("User", userSchema);
 
+//the strategy for authanticating users
+passport.use(new LocalStrategy(
+  function (username, password, done) {
+    console.log("auth called");
+    console.log(username + " " + password);
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        console.log("cant find user");
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!(user.password == password)) {
+        console.log("incorrect password");
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      console.log("found user");
+      return done(null, user);
+    });
+  }
+));
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
 
 app.get("/teacher", (req, res) => {
-  res.render("teacher/index");
+  if (req.isAuthenticated()) {
+    res.render("teacher/index");
+  } else {
+    res.redirect("/login");
+  }
 });
 
 app.get("/login", (req, res) => {
@@ -33,39 +88,31 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+app.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/login');
+});
+
 app.post("/register", function (req, res) {
   const newUser = new User({
-      email: req.body.username,
-      password: req.body.password
+    username: req.body.username,
+    password: req.body.password
   });
 
   newUser.save(function (err) {
-      if (err) {
-          console.log(err);
-      } else {
-          //what to do after registering a user.
-          res.render("teacher/index");
-      }
+    if (err) {
+      console.log(err);
+    } else {
+      //what to do after registering a user.
+      req.session.isLogged = true;
+      res.render("teacher/index");
+    }
   });
 });
 
-app.post("/login", function (req, res) {
-  const username = req.body.username;
-  const password = req.body.password;
-
-  User.findOne({email: username}, function(err, foundUser){
-      if(err){
-          console.log(err);
-      }else{
-          if(foundUser){
-              if(foundUser.password === password){
-                  //what to do after user log in.
-                  res.render("teacher/index");
-              }
-          }
-      }
-  });
-
+app.post("/login", passport.authenticate('local', { failureRedirect: "/login" }), function (req, res) {
+  req.session.isLogged = true;
+  res.redirect("/teacher");
 });
 
 app.listen(3000, () => {
