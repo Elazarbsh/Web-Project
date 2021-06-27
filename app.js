@@ -59,12 +59,14 @@ passport.use(
       if (!(user.password == password)) {
         console.log("incorrect password");
         return done(null, false, { message: "Incorrect password." });
+
       }
       console.log("found user");
       return done(null, user);
     });
   })
 );
+
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -83,6 +85,7 @@ app.get("/", (req, res) => {
 app.get("/exams", (req, res) => {
   if (req.isAuthenticated()) {
     res.render("exam/index");
+
   } else {
     res.redirect("/login");
   }
@@ -101,10 +104,16 @@ app.get("/logout", (req, res, next) => {
   res.redirect("/login");
 });
 
+app.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/login');
+});
+
 app.post("/register", function (req, res) {
   const newUser = new User({
     username: req.body.username,
     password: req.body.password,
+
   });
 
   newUser.save(function (err) {
@@ -126,6 +135,7 @@ app.post(
     res.redirect("/exams");
   }
 );
+
 
 app.listen(3000, () => {
   console.log("Listening to port 3000..");
