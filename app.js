@@ -7,6 +7,8 @@ const session = require("express-session");
 const passport = require("passport");
 const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/auth");
+const codeRoutes = require("./routes/code");
+const { profile } = require('console');
 
 const app = express();
 app.use(express.static("public"));
@@ -14,6 +16,8 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+
+
 
 /**
  * -------------- SESSION SETUP ----------------
@@ -40,7 +44,7 @@ app.use(
  * -------------- PASSPORT AUTHENTICATION ----------------
  */
 
- require("./config/passport-config");
+require("./config/passport-config");
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -76,7 +80,10 @@ app.get("/exams", (req, res) => {
 });
 
 app.use(authRoutes);
+app.use(codeRoutes);
+
 
 app.listen(3000, () => {
   console.log("Listening to port 3000..");
 });
+

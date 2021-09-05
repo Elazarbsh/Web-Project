@@ -1,0 +1,21 @@
+<% layout('./layouts/boilerplate') %>
+
+    <head>
+        <script src="scripts/waiting-room.js" defer></script>
+    </head>
+    <div>
+
+        <%if (code !==0) { %>
+            <h1 style="text-transform: none;">
+                Your Code is <%= code %>
+            </h1>
+            <% } %>
+
+                <h1> Participants:</h1>
+
+                <div id="participants">
+
+                </div>
+
+
+    </div>

@@ -1,0 +1,28 @@
+<% layout('./layouts/boilerplate') %>
+
+
+    <div>
+        <h1>code</h1>
+        <div>
+            <!-- Makes POST request to /login route -->
+            <form action="/start-test" method="POST">
+                <div>
+                    <label for="code">Enter Code</label>
+                    <input type="text" name="code">
+                </div>
+                <button type="submit">Start</button>
+            </form>
+
+            <form action="/generate-code" method="get">
+                <button type="submit" name="generate">Generate Code</button>
+            </form>
+
+            <%if (code !=0) { %>
+                <h1>
+                    your code is <%= code %>
+                </h1>
+                <% } %>
+        </div>
+
+    </div>
+
