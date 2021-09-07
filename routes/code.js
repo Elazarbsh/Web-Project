@@ -53,7 +53,7 @@ router.get("/waiting-room", (req, res) => {
 });
 
 router.get("/test", (req, res) => {
-    res.render("exams/exans");
+    res.render("exams/exams");
   });
 
 /**
