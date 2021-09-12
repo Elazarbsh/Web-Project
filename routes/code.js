@@ -80,6 +80,23 @@ router.post("/start-test", (req, res) => {
 });
 
 
+router.post("/submit-test", (req, res) => {
+    if (req.isAuthenticated()) {
+        let i = 1;
+        const answers = [];
+        while(req.body["q" + i]){
+            answers.push(parseInt(req.body["q"+ i++]));
+        }
+
+        
+        console.log(answers);
+
+    } else {
+        res.redirect("/login");
+    }
+});
+
+
 /**
  * -------------- API ROUTES ----------------
  */
