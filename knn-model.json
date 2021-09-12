@@ -1,0 +1,1 @@
+{"name":"KNN","kdTree":{"obj":[2,2,2,2,3],"left":{"obj":[1,1,1,1,2],"left":{"obj":[0,0,0,0,1],"left":null,"right":null,"parent":null,"dimension":2},"right":null,"parent":null,"dimension":1},"right":{"obj":[3,3,3,3,4],"left":null,"right":null,"parent":null,"dimension":1},"parent":null,"dimension":0,"dimensions":[0,1,2,3,4]},"k":3,"classes":[1,2,3,4],"isEuclidean":true}

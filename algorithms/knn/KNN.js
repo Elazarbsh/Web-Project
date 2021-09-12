@@ -1,8 +1,8 @@
-import { euclidean as euclideanDistance } from "./euclidean.js";
+const euclideanDistance = require("./euclidean.js");
 
-import KDTree from "./KDTree.js";
+const KDTree = require("./KDTree.js");
 
-export default class KNN {
+module.exports = class KNN {
   /**
    * @param {Array} dataset
    * @param {Array} labels
@@ -98,7 +98,7 @@ export default class KNN {
     }
     throw new TypeError("dataset to predict must be an array or a matrix");
   }
-}
+};
 
 function getSinglePrediction(knn, currentCase) {
   var nearestPoints = knn.kdTree.nearest(currentCase, knn.k);

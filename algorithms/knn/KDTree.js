@@ -21,7 +21,7 @@ class Node {
   }
 }
 
-export default class KDTree {
+module.exports = class KDTree {
   constructor(points, metric) {
     // If points is not an array, assume we're loading a pre-built tree
     if (!Array.isArray(points)) {
@@ -136,7 +136,7 @@ export default class KDTree {
     }
     return result;
   }
-}
+};
 
 function toJSONImpl(src) {
   const dest = new Node(src.obj, src.dimension, null);
