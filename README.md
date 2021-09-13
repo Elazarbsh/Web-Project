@@ -4,7 +4,7 @@ install node.js on your machine
 
 run 'npm install' before working on the project, this installs all the needed dependencies in package.json
 
-server folder contains the file 'app.js' this where we take care of http requests comming from the user.
+server folder contains the file 'app.js' this where we take care of http requests coming from the user.
 
 (home,student,teacher) folders where the page is designed ,feel free to make separate HTML,CSS,JS folders
 
