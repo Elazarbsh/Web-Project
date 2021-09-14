@@ -19,6 +19,8 @@ font-family: 'Source Sans Pro'; // body
     --red-200: #fecaca;
     --red-500: #ef4444;
     --red-800: #ab0f0f;
+
+    --google-red: #ea4335;
     
     --green-200: #b4f7d4;
     --green-500: #10b981;
@@ -35,7 +37,7 @@ font-family: 'Source Sans Pro'; // body
     --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-4: 0 0 13px -6px rgba(0, 0, 0, .15);
 
     /* --- fonts --------------------------------------- */
     --font-heading: 'Poppins';
@@ -59,10 +61,6 @@ font-family: 'Source Sans Pro'; // body
     --transition: all 0.16s ease-in-out;
     --max-width: 960px;
     --breakPoint-mobile: 600px;
-}
-
-:focus {
-
 }
 
 ::selection {
@@ -129,10 +127,30 @@ img {
 /* --------------------------------------------------------------------------------------------- */
 /* --- GLobal Classes Styles ------------------------------------------------------------------- */
 
+/* general container (body level wrapper) */
 .container {
     max-width: var(--max-width);
     width: 85%;
     margin: auto;
+}
+@media only screen and (max-width: 600px) {
+    .container { width: 95% }
+}
+
+/* alerts */
+.alert {
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 1rem;
+    border-color: transparent;
+    border-radius: var(--borderRadius);
+}
+.alert-danger {
+    color: var(--red-dark);
+    background: var(--red-light);
+}
+.alert-success {
+    color: var(--green-dark);
+    background: var(--green-light);
 }
 
 /* buttons */
@@ -160,6 +178,7 @@ img {
 }
 .btn-primary:hover {
     background: var(--color-primaryDark);
+    border: 3px solid var(--color-primaryDark);
     box-shadow: var(--shadow-3);
 }
 .btn-empty {
@@ -169,10 +188,74 @@ img {
 }
 .btn-empty:hover {
     background: var(--color-primary);
-    text-shadow: 0 0 4px #6b4507cf;
     box-shadow: var(--shadow-3);
 }
+.btn[disabled] {
+    cursor: not-allowed;
+}
+.btn-primary[disabled] {
+    color: #fff;
+    background-color: var(--grey-500);
+    border: 3px solid var(--grey-500);
+    text-shadow: 0 0 4px #6b4507cf;
+}
+.btn-primary:hover[disabled] {
+    background-color: var(--grey-500);
+    border: 3px solid var(--grey-500);
+}
 
+/* tooltips */
+.tooltip {
+    position: relative;
+}
+/* ~tooltip message is the '--tip' costume property on the element itself. */
+.tooltip::before {
+    content: var(--tip);
+    position: absolute;
+    bottom: 3rem;
+    left: -50%;
+    width: 200%;
+    padding: 0.6rem;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    z-index: 5;
+    font-size: 0.85rem;
+    font-weight: 400;
+    background-color: var(--color-backgroundDark);
+    color: var(--color-textOnDark);
+    border-radius: var(--borderRadius);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    text-shadow: none;
+}
+.tooltip::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 0.5rem);
+    bottom: 2.75rem;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-backgroundDark);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+}
+.tooltip:hover::before,
+.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
 
 /* --------------------------------------------------------------------------------------------- */
 /* --- Navigation Bar Styles ------------------------------------------------------------------- */
@@ -185,6 +268,8 @@ img {
     height: 60px;
     background: var(--color-backgroundDark);
     box-shadow: var(--shadow-2);
+    color: var(--color-textOnDark);
+    font-weight: 700;
     z-index: 999;
 }
 .nav-wrapper {
@@ -350,6 +435,7 @@ main section:not(:last-of-type) {
     line-height: 0;
 }
 .section-title h3 {
+    text-align: center;
     position: relative;
     margin: 0 auto 3rem;
     width: fit-content;
@@ -520,26 +606,5 @@ main section:not(:last-of-type) {
 
 
 
-
-
-
-
-/* alerts */
-.alert {
-    padding: 0.375rem 0.75rem;
-    margin-bottom: 1rem;
-    border-color: transparent;
-    border-radius: var(--borderRadius);
-}
-
-.alert-danger {
-    color: var(--red-dark);
-    background: var(--red-light);
-}
-
-.alert-success {
-    color: var(--green-dark);
-    background: var(--green-light);
-}
 
 

@@ -1,5 +1,5 @@
 // 
-const examQuestionsUrl = '/examQuestions.json';
+const examQuestionsUrl = './examQuestions.json';
 
 // general data fetching function.
 const getData = async (url) => {
@@ -23,7 +23,7 @@ const createQuestionElement = (questionObj, questionNum) => {
     questionObj.answers.forEach( (answer, answerNum) => {
         questionElement += `
         <div class="answer-wrapper">
-            <input type="radio" id="q${questionNum}-a${answerNum}" name="q${questionNum}" value="${answerNum}" required data-validation-required-message="Please select one of these answers.">
+            <input type="radio" id="q${questionNum}-a${answerNum}" name="q${questionNum}" value="a${answerNum}" required data-validation-required-message="Please select one of these answers.">
             <label for="q${questionNum}-a${answerNum}">
                 <span class="answer-number">${String.fromCharCode("a".charCodeAt(0) + answerNum)}.</span>
                 <span class="answer-body">${answer}</span>

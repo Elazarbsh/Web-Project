@@ -46,7 +46,7 @@ const renderSmoothScroll = () => {
 //
 const renderNavBarEffects = () => {
     const OFFSET = 80; // px
-    const nav = document.querySelector("header nav");
+    const nav = document.querySelector("nav");
     const navList = nav.querySelector('ul');
     const navMobile = nav.querySelector('.nav-mobile');
     const navMobileIcon = nav.querySelector('.nav-mobile span');
