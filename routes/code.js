@@ -66,7 +66,7 @@ router.get("/waiting-room-students", (req, res) => {
           res.redirect("/code");
           return;
         }
-        res.render("exams/waiting-room", { code:0 });
+        res.render("exams/waiting-room", { code: 0 });
       }
     });
   } else {
@@ -93,7 +93,7 @@ router.post("/start-test", (req, res) => {
       } else {
         User.updateOne(
           { _id: req.session.passport.user },
-          { "$set": { "code": code, "group": "N/A" } },
+          { $set: { code: code, group: "N/A" } },
           function (err) {
             err ? console.log(err) : res.redirect("/test");
           }
@@ -110,7 +110,7 @@ router.post("/submit-test", (req, res) => {
     let i = 1;
     const answers = [];
     while (req.body["q" + i]) {
-      answers.push(parseInt(req.body["q" + i++]));
+      answers.push(parseInt(req.body["q" + i++][1]));
     }
     let knnString = fs.readFileSync("knn-model.json", "utf-8"); //Read KNN model as string
     let knn = KNN.load(JSON.parse(knnString)); //Parse knnString to JSON
@@ -124,8 +124,7 @@ router.post("/submit-test", (req, res) => {
       { _id: req.session.passport.user },
       { group: ans },
       function (err) {
-        if (err)
-          console.log(err);
+        if (err) console.log(err);
       }
     );
 
@@ -148,16 +147,15 @@ router.get("/api/students", (req, res) => {
         const user = obj.toObject();
         let c = "";
         if (typeof user.createdTest === "undefined") {
-          if(typeof user.code === "undefined"){
+          if (typeof user.code === "undefined") {
             res.redirect("/code");
             return;
-          }else{
+          } else {
             c = user.code;
           }
-        }else{
+        } else {
           c = user.createdTest;
         }
-        
 
         User.find({ code: c }, function (err, students) {
           if (err) {
