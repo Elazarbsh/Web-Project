@@ -74,7 +74,7 @@ router.post("/start-test", (req, res) => {
       } else {
         User.updateOne(
           { _id: req.session.passport.user },
-          { code: code },
+          { "$set": { "code": code, "group": "N/A" } },
           function (err) {
             err ? console.log(err) : res.redirect("/test");
           }
@@ -99,6 +99,16 @@ router.post("/submit-test", (req, res) => {
 
     let knnJson = knn.toJSON();
     fs.writeFileSync("knn-model.json", JSON.stringify(knnJson)); //save the added example in the model
+
+    //update result in database
+    User.updateOne(
+      { _id: req.session.passport.user },
+      { group: ans },
+      function (err) {
+        if (err)
+          console.log(err);
+      }
+    );
 
     res.render("exams/result", { ans });
   } else {
