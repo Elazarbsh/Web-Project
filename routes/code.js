@@ -55,6 +55,25 @@ router.get("/waiting-room", (req, res) => {
   }
 });
 
+router.get("/waiting-room-students", (req, res) => {
+  if (req.isAuthenticated()) {
+    User.findOne({ _id: req.session.passport.user }, function (err, obj) {
+      if (err) {
+        console.log(err);
+      } else {
+        const user = obj.toObject();
+        if (typeof user.code === "undefined") {
+          res.redirect("/code");
+          return;
+        }
+        res.render("exams/waiting-room", { code:0 });
+      }
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
 router.get("/test", (req, res) => {
   res.render("exams/exams");
 });
@@ -110,7 +129,7 @@ router.post("/submit-test", (req, res) => {
       }
     );
 
-    res.render("exams/result", { ans });
+    res.redirect("/waiting-room-students");
   } else {
     res.redirect("/login");
   }
@@ -127,10 +146,20 @@ router.get("/api/students", (req, res) => {
         console.log(err);
       } else {
         const user = obj.toObject();
+        let c = "";
         if (typeof user.createdTest === "undefined") {
-          res.redirect("/code");
+          if(typeof user.code === "undefined"){
+            res.redirect("/code");
+            return;
+          }else{
+            c = user.code;
+          }
+        }else{
+          c = user.createdTest;
         }
-        User.find({ code: user.createdTest }, function (err, students) {
+        
+
+        User.find({ code: c }, function (err, students) {
           if (err) {
             console.log(err);
           } else {

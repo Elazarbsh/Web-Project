@@ -1,6 +1,3 @@
-console.log("hello");
-
-const counter = 0;
 
 async function getStudents() {
     const response = await fetch('/api/students');
@@ -17,25 +14,24 @@ function showParticipants() {
         result.forEach(element => {
             const elem = document.getElementById(element._id);
             if (elem != null) {
+                if (element.group != "N/A") {
+                    const check = document.getElementById(element._id + "box");
+
+                    if (check == null) {
+                        const groupDiv = document.getElementById("group" + element.group);
+                        groupDiv.appendChild(createNameElement(element, element._id+"box"));
+                    }
+                }
                 return true;
             }
+
             partDiv.appendChild(createNameElement(element, element._id));
-            fillBoxes(element);
         });
     });
 }
 
-function fillBoxes(element) {
-    if (element.group != "N/A") {
-        const elem = document.getElementById(element._id + "box");
-        if (elem == null) {
-            const groupDiv = document.getElementById("group" + element.group);
-            groupDiv.appendChild(createNameElement(element, element._id + "box"));
-        }
-    }
-}
 
-function createNameElement(element, id) {
+function createNameElement(element, id){
     const p = document.createElement("p");
     p.setAttribute('id', id);
     const t = document.createTextNode(element.firstName + " " + element.lastName);

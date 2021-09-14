@@ -1,28 +1,63 @@
-<% layout('./layouts/boilerplate') %>
+<!DOCTYPE html>
 
-    <head>
-        <script src="scripts/waiting-room.js" defer></script>
-        <link rel="stylesheet" type="text/css" href="styles/boxes-style.css">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
+<html lang="en">
 
-    <body>
+<head>
+    <!-- Page Meta Data -------------------------------------------------------------------------->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
 
-        <div class="contact-wrapper">
+    <!-- Page Information - SEO & Title ---------------------------------------------------------->
+    <meta name="author" content="Yair Dagan, yair, dagan">
+    <meta name="description" content="StudyGroup - the best study app in the world.">
+    <title>StudyGroup - Groups</title>
 
-            <%if (code !==0) { %>
-                <h1 style="text-transform: none;" class="section-title-wm h2 contact-wrapper">
-                    Your Code is <%= code %>
-                </h1>
-                <% } %>
+    <!-- Styles ---------------------------------------------------------------------------------->
+    <!-- font-awesome (icons library) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <!-- modern-normalize CSS (reset file) -->
+    <link href="styles/modern-normalize.css" rel="stylesheet" type="text/css">
+    <!-- custom styles -->
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+    <link href="styles/login.css" rel="stylesheet" type="text/css">
 
-                    <h1 class="section-title h3"> Participants:</h1>
+    <!-- Scripts --------------------------------------------------------------------------------->
+    <!-- ScrollReveal v4.0.9 (scroll animations library) -->
+    <script src="scripts/scrollreveal.js" defer></script>
 
-                    <div id="participants">
+    <script src="scripts/waiting-room.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="styles/boxes-style.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
 
-                    </div>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav-wrapper container">
+            <a class="nav-logo" href="/">StudyGroup</a>
+            <a href="/"><i class="fa fa-arrow-left"></i> back to main page</a>
         </div>
+    </nav>
 
+    <main class="main container">
+            <div class="contact-wrapper">
+
+                <%if (code !==0) { %>
+                    <h1 style="text-transform: none;padding-top: 1rem;" class="form-field section-title h3 container">
+                        Your Exam Code is <b><%= code %></b>
+                    </h1>
+                    <% } %>
+
+                        <h1 class="section-title h3" style="padding-top: 1rem;"> Participants:</h1>
+
+                        <div id="participants">
+
+                        </div>
+            </div>
         <div class="container">
             <div class="box">
                 <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
@@ -53,4 +88,8 @@
                 </div>
             </div>
         </div>
-    </body>
+
+    </main>
+
+
+</body>

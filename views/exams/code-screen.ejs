@@ -1,20 +1,70 @@
-<% layout('./layouts/boilerplate') %>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Page Meta Data -------------------------------------------------------------------------->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
+
+    <!-- Page Information - SEO & Title ---------------------------------------------------------->
+    <meta name="author" content="Yair Dagan, yair, dagan">
+    <meta name="description" content="StudyGroup - the best study app in the world.">
+    <title>StudyGroup - Code</title>
+
+    <!-- Styles ---------------------------------------------------------------------------------->
+    <!-- font-awesome (icons library) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <!-- modern-normalize CSS (reset file) -->
+    <link href="styles/modern-normalize.css" rel="stylesheet" type="text/css">
+    <!-- custom styles -->
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+    <link href="styles/login.css" rel="stylesheet" type="text/css">
+
+    <!-- Scripts --------------------------------------------------------------------------------->
+    <!-- ScrollReveal v4.0.9 (scroll animations library) -->
+    <script src="scripts/scrollreveal.js" defer></script>
+</head>
+
+<body>
 
 
-    <div>
-        <h1>code</h1>
-        <div>
+
+    <nav class="nav">
+        <div class="nav-wrapper container">
+            <a class="nav-logo" href="/">StudyGroup</a>
+            <a href="/"><i class="fa fa-arrow-left"></i> back to main page</a>
+        </div>
+    </nav>
+
+    <main class="main container">
+        <section>
+
+            <div class="section-title-wm">
+                <h2>Join</h2>
+            </div>
+            <div class="section-title">
+                <h3>Join<span>.</span></h3>
+            </div>
+
+            <p class="login-form" >
+                Enter code and press "start" to join an existing test or press "generate code" to start a new one
+            </p>
+
             <!-- Makes POST request to /login route -->
-            <form action="/start-test" method="POST">
-                <div>
+            <form action="/start-test" method="POST" class="login-form">
+                <div class="form-field">
                     <label for="code">Enter Code</label>
-                    <input type="text" name="code">
+                    <input type="text" name="code" class="form-input">
                 </div>
-                <button type="submit">Start</button>
+                <button type="submit" class="btn btn-primary">Start</button>
             </form>
 
-            <form action="/generate-code" method="get">
-                <button type="submit" name="generate">Generate Code</button>
+            <form action="/generate-code" method="get" class="login-form">
+                <button type="submit" name="generate" class="btn btn-primary">Generate Code</button>
             </form>
 
             <%if (code !=0) { %>
@@ -22,7 +72,26 @@
                     your code is <%= code %>
                 </h1>
                 <% } %>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <h4>The end Of The Road...</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium repudiandae doloribus doloremque? Recusandae, iusto dolor? Ab ipsa rerum nulla enim, tempore quos quas? Consectetur ea eos architecto tempora qui illo saepe facere!</p>
+            
+            <div>
+                <h5 style="text-align: center;">here some font-awesome social media icons:</h5>
+                <div style="margin: auto; max-width: 30rem; display: flex; flex-direction: row; justify-content: space-evenly; font-size: 2rem;">
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#"><i class="fa fa-stack-overflow"></i></a>
+                </div>
+
+                <p class="footer-copyrights">© Lorem <a href="#">ipsum dolor</a> 2020 | ® sit <a href="#">amet consectetur</a></p>
+            </div>
         </div>
-
-    </div>
-
+    </footer>
+</body>
