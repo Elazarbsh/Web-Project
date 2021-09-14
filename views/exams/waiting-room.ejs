@@ -2,20 +2,55 @@
 
     <head>
         <script src="scripts/waiting-room.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="styles/boxes-style.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
-    <div>
 
-        <%if (code !==0) { %>
-            <h1 style="text-transform: none;">
-                Your Code is <%= code %>
-            </h1>
-            <% } %>
+    <body>
 
-                <h1> Participants:</h1>
+        <div class="contact-wrapper">
 
-                <div id="participants">
+            <%if (code !==0) { %>
+                <h1 style="text-transform: none;" class="section-title-wm h2 contact-wrapper">
+                    Your Code is <%= code %>
+                </h1>
+                <% } %>
 
+                    <h1 class="section-title h3"> Participants:</h1>
+
+                    <div id="participants">
+
+                    </div>
+        </div>
+
+        <div class="container">
+            <div class="box">
+                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
                 </div>
-
-
-    </div>
+                <div class="content" id="group1">
+                    <h3>Group A</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
+                </div>
+                <div class="content" id="group2">
+                    <h3>Group B</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
+                </div>
+                <div class="content" id="group3">
+                    <h3>Group C</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
+                </div>
+                <div class="content" id="group4">
+                    <h3>Group D</h3>
+                </div>
+            </div>
+        </div>
+    </body>
