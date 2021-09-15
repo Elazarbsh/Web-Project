@@ -1,95 +1,104 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
+  <head>
     <!-- Page Meta Data -------------------------------------------------------------------------->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0"
+    />
 
     <!-- Page Information - SEO & Title ---------------------------------------------------------->
-    <meta name="author" content="Yair Dagan, yair, dagan">
-    <meta name="description" content="StudyGroup - the best study app in the world.">
+    <meta name="author" content="Yair Dagan, yair, dagan" />
+    <meta
+      name="description"
+      content="StudyGroup - the best study app in the world."
+    />
     <title>StudyGroup - Groups</title>
 
     <!-- Styles ---------------------------------------------------------------------------------->
     <!-- font-awesome (icons library) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        type="text/css">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <!-- modern-normalize CSS (reset file) -->
-    <link href="styles/modern-normalize.css" rel="stylesheet" type="text/css">
+    <link href="styles/modern-normalize.css" rel="stylesheet" type="text/css" />
     <!-- custom styles -->
-    <link href="styles/main.css" rel="stylesheet" type="text/css">
-    <link href="styles/login.css" rel="stylesheet" type="text/css">
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="styles/login.css" rel="stylesheet" type="text/css" />
 
     <!-- Scripts --------------------------------------------------------------------------------->
     <!-- ScrollReveal v4.0.9 (scroll animations library) -->
     <script src="scripts/scrollreveal.js" defer></script>
 
     <script src="scripts/waiting-room.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="styles/boxes-style.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
+    <link rel="stylesheet" type="text/css" href="styles/boxes-style.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-
-<body>
-
+  <body>
     <nav class="nav">
-        <div class="nav-wrapper container">
-            <a class="nav-logo" href="/">StudyGroup</a>
-            <a href="/"><i class="fa fa-arrow-left"></i> back to main page</a>
-        </div>
+      <div class="nav-wrapper container">
+        <a class="nav-logo" href="/">StudyGroup</a>
+        <a href="/login">Log Out</a>
+        <a href="/"><i class="fa fa-arrow-left"></i> Back To Main Page</a>
+      </div>
     </nav>
 
     <main class="main container">
-            <div class="contact-wrapper">
+      <div class="contact-wrapper">
+        <%if (code !==0) { %>
+        <h1
+          style="text-transform: none; padding-top: 1rem"
+          class="form-field section-title h3 container"
+        >
+          Your Exam Code is <b><%= code %></b>
+        </h1>
+        <a href="/code" class="btn btn-primary" role="button"
+          >Generate a Different Code</a
+        >
+        <% } %>
 
-                <%if (code !==0) { %>
-                    <h1 style="text-transform: none;padding-top: 1rem;" class="form-field section-title h3 container">
-                        Your Exam Code is <b><%= code %></b>
-                    </h1>
-                    <% } %>
+        <h1 class="section-title h3" style="padding-top: 1rem">
+          Participants:
+        </h1>
 
-                        <h1 class="section-title h3" style="padding-top: 1rem;"> Participants:</h1>
-
-                        <div id="participants">
-
-                        </div>
-            </div>
-        <div class="container">
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group1">
-                    <h3>Group A</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group2">
-                    <h3>Group B</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group3">
-                    <h3>Group C</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group4">
-                    <h3>Group D</h3>
-                </div>
-            </div>
+        <div id="participants"></div>
+      </div>
+      <div class="container">
+        <div class="box">
+          <div class="icon"><i class="fa fa-user" aria-hidden="false"></i></div>
+          <div class="content" id="group1">
+            <h3>Group A</h3>
+          </div>
         </div>
-
+        <div class="box">
+          <div class="icon"><i class="fa fa-user" aria-hidden="false"></i></div>
+          <div class="content" id="group2">
+            <h3>Group B</h3>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon"><i class="fa fa-user" aria-hidden="false"></i></div>
+          <div class="content" id="group3">
+            <h3>Group C</h3>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon"><i class="fa fa-user" aria-hidden="false"></i></div>
+          <div class="content" id="group4">
+            <h3>Group D</h3>
+          </div>
+        </div>
+      </div>
     </main>
-
-
-</body>
+  </body>
+</html>
