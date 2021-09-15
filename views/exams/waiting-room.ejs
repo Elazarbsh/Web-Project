@@ -1,95 +1,114 @@
-<!DOCTYPE html>
+body{
+    margin: 0;
+    padding: 0;
+    font-size: sans-serif;
+}
+.container2
+{
+    position: relative;
+    width: 1200px;
+    height: auto;
+    margin: auto;
 
-<html lang="en">
+}
+.container .box
+{
+    position: relative;
+    width: calc(400px - 30px);
+    height: calc(300px - 30px);
+    background: #000;
+    float: left;
+    margin: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
+}
 
-<head>
-    <!-- Page Meta Data -------------------------------------------------------------------------->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
+.container .box .icon .fa
+{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 80px;
+    transition: 0.5s;
+    color: #fff;
+}
 
-    <!-- Page Information - SEO & Title ---------------------------------------------------------->
-    <meta name="author" content="Yair Dagan, yair, dagan">
-    <meta name="description" content="StudyGroup - the best study app in the world.">
-    <title>StudyGroup - Groups</title>
+.container .box:hover .icon .fa
+{
+    font-size: 40px;
+}
 
-    <!-- Styles ---------------------------------------------------------------------------------->
-    <!-- font-awesome (icons library) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        type="text/css">
-    <!-- modern-normalize CSS (reset file) -->
-    <link href="styles/modern-normalize.css" rel="stylesheet" type="text/css">
-    <!-- custom styles -->
-    <link href="styles/main.css" rel="stylesheet" type="text/css">
-    <link href="styles/login.css" rel="stylesheet" type="text/css">
+.container .box .content
+{
+    position: absolute;
+    top: 100%;
+    height: calc(100% - 100px);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    opacity: 0;
+}
 
-    <!-- Scripts --------------------------------------------------------------------------------->
-    <!-- ScrollReveal v4.0.9 (scroll animations library) -->
-    <script src="scripts/scrollreveal.js" defer></script>
+.container .box:hover .content
+{
+    top: 100px;
+    opacity: 1;
+}
 
-    <script src="scripts/waiting-room.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="styles/boxes-style.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
+.container .box .content h3
+{
+    margin: 0 0 10px;
+    padding: 0;
+    color: #fff;
+    font-size: 24px;
+}
 
+.container .box .content p
+{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
 
-<body>
+.container .box:nth-child(1) .icon
+{
+    background: #319635;
+}
 
-    <nav class="nav">
-        <div class="nav-wrapper container">
-            <a class="nav-logo" href="/">StudyGroup</a>
-            <a href="/"><i class="fa fa-arrow-left"></i> back to main page</a>
-        </div>
-    </nav>
+.container .box:nth-child(1) 
+{
+    background: #4caf50;
+}
 
-    <main class="main container">
-            <div class="contact-wrapper">
+.container .box:nth-child(2) .icon
+{
+    background: #d03852;
+}
 
-                <%if (code !==0) { %>
-                    <h1 style="text-transform: none;padding-top: 1rem;" class="form-field section-title h3 container">
-                        Your Exam Code is <b><%= code %></b>
-                    </h1>
-                    <% } %>
+.container .box:nth-child(2) 
+{
+    background: #f54967;
+}
 
-                        <h1 class="section-title h3" style="padding-top: 1rem;"> Participants:</h1>
+.container .box:nth-child(3) .icon
+{
+    background: #23798e;
+}
 
-                        <div id="participants">
+.container .box:nth-child(3) 
+{
+    background: #328fa5;
+}
 
-                        </div>
-            </div>
-        <div class="container">
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group1">
-                    <h3>Group A</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group2">
-                    <h3>Group B</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group3">
-                    <h3>Group C</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="icon"><i class="fa fa-user" aria-hidden="false"></i>
-                </div>
-                <div class="content" id="group4">
-                    <h3>Group D</h3>
-                </div>
-            </div>
-        </div>
+.container .box:nth-child(4) .icon
+{
+    background: #ece124;
+}
 
-    </main>
-
-
-</body>
+.container .box:nth-child(4) 
+{
+    background: #f9f26b;
+}
