@@ -1,39 +1,67 @@
 [
+
     {
-        "question": "test Q1 ?",
+        "question": "How would you rate your level of knowledge compared to the rest of the class?",
         "answers": [
-            "A1",
-            "A2",
-            "A3",
-            "A4"
+            "Bad",
+            "Reasonable",
+            "Good",
+            "Excellent"
         ]
     },
     {
-        "question": "test Q2 !!!",
+        "question": "Will you be willing to help a student who struggles?",
         "answers": [
-            "A1 ---",
-            "A2",
-            "A3"
+            "I prefer not to",
+            "Only if theres no one else who can help him",
+            "Yes",
+            "I will be happy to do it"
         ]
     },
     {
-        "question": "test Q3 ...",
+        "question": "Are you willing to lead a group?",
         "answers": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5",
-            "A6"
+            "Not at all",
+            "Only if no one else wants to",
+            "Yes",
+            "I was born to lead"
         ]
     },
     {
-        "question": "test Q4 ?!?",
+        "question": "Do you prefer to study alone, or in a group?",
         "answers": [
-            "A1",
-            "A2",
-            "A3",
-            "A4"
+            "I cant study in a group",
+            "I prefer to study by myself but can do both",
+            "I like to study in a group",
+            "I absolutely have to be in a group in order to study"
+        ]
+    },
+    {
+        "question": "If you have a question, Do you search the internet before asking your teacher?",
+        "answers": [
+            "Yes, i always go to the internet first",
+            "Depends on the question.",
+            "I prefer asking my teacher first",
+            "I dont use the internet"
+        ]
+    },
+    {
+        "question": " How often do you read?",
+        "answers": [
+            "Never",
+            "Sometimes",
+            "Atleast twice a week",
+            "Everyday"
+        ]
+    },
+
+    {
+        "question": "How important are good grades to you? ",
+        "answers": [
+            "Not at all",
+            "A little bit",
+            "Pretty important",
+            "Very important"
         ]
     }
 ]
